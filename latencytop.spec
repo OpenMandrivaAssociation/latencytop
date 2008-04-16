@@ -11,6 +11,7 @@ License:	GPLv2
 Group:		Development/Other
 URL:		http://latencytop.org/
 Source:		http://latencytop.org/download/latencytop-%{version}.tar.gz
+BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	libncursesw-devel
 BuildRequires:	glib2-devel
 
