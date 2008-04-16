@@ -24,7 +24,7 @@ worst latency hiccups.
 
 %prep
 %setup -q
-sed -i 's|-O0|%{optflags}|' Makefile
+sed -i 's|-O0|%{optflags} -I%{_includedir}/ncursesw|' Makefile
 sed -i 's|"latencytop.trans"|"%{_datadir}/%{name}/latencytop.trans"|' latencytop.c
 
 %build
