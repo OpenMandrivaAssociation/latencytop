@@ -1,6 +1,6 @@
 
 %define name	latencytop
-%define version	0.3
+%define version	0.4
 %define rel	1
 
 Summary:	Visualizer of system latencies
@@ -24,23 +24,27 @@ worst latency hiccups.
 
 %prep
 %setup -q
-sed -i 's|-O0|%{optflags} -I%{_includedir}/ncursesw|' Makefile
 sed -i 's|"latencytop.trans"|"%{_datadir}/%{name}/latencytop.trans"|' latencytop.c
+sed -i 's|"latencytop.block"|"%{_datadir}/%{name}/latencytop.block"|' latencytop.c
 
 %build
+export CFLAGS="%{optflags} -I%{_includedir}/ncursesw"
 %make
 
 %install
 rm -rf %{buildroot}
-install -d -m755 %{buildroot}%{_bindir}
-install -d -m755 %{buildroot}%{_datadir}/%{name}
-install -m755 %{name} %{buildroot}%{_bindir}
-install -m644 latencytop.trans %{buildroot}%{_datadir}/%{name}
+install -d -m755 %{buildroot}%{_sbindir}
+%makeinstall_std
+install -m644 latencytop.block %{buildroot}%{_datadir}/%{name}
+install -d -m755 %{buildroot}%{_mandir}/man8
+install -m644 latencytop.8 %{buildroot}%{_mandir}/man8/
 
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%{_bindir}/%{name}
+%{_sbindir}/%{name}
 %{_datadir}/%{name}
+%{_mandir}/man8/latencytop.8*
+
