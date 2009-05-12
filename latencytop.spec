@@ -1,6 +1,6 @@
 
 %define name	latencytop
-%define version	0.4
+%define version	0.5
 %define rel	1
 
 Summary:	Visualizer of system latencies
@@ -14,6 +14,7 @@ Source:		http://latencytop.org/download/latencytop-%{version}.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-root
 BuildRequires:	libncursesw-devel
 BuildRequires:	glib2-devel
+BuildRequires:  gtk2-devel
 
 %description
 LatencyTOP is a Linux tool for software developers (both kernel and
@@ -24,8 +25,6 @@ worst latency hiccups.
 
 %prep
 %setup -q
-sed -i 's|"latencytop.trans"|"%{_datadir}/%{name}/latencytop.trans"|' latencytop.c
-sed -i 's|"latencytop.block"|"%{_datadir}/%{name}/latencytop.block"|' latencytop.c
 
 %build
 export CFLAGS="%{optflags} -I%{_includedir}/ncursesw"
@@ -35,7 +34,6 @@ export CFLAGS="%{optflags} -I%{_includedir}/ncursesw"
 rm -rf %{buildroot}
 install -d -m755 %{buildroot}%{_sbindir}
 %makeinstall_std
-install -m644 latencytop.block %{buildroot}%{_datadir}/%{name}
 install -d -m755 %{buildroot}%{_mandir}/man8
 install -m644 latencytop.8 %{buildroot}%{_mandir}/man8/
 
