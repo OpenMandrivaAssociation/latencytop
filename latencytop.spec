@@ -1,7 +1,7 @@
 
 %define name	latencytop
 %define version	0.5
-%define rel	1
+%define rel	2
 
 Summary:	Visualizer of system latencies
 Name:		%name
