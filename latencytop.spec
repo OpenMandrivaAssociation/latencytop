@@ -8,7 +8,7 @@ Version:	%version
 Release:	%mkrel %rel
 License:	GPLv2
 Group:		Development/Other
-URL:		http://latencytop.org/
+URL:		https://latencytop.org/
 Source0:	http://latencytop.org/download/latencytop-%{version}.tar.gz
 BuildRequires:	ncursesw-devel
 BuildRequires:	pkgconfig(glib-2.0)
