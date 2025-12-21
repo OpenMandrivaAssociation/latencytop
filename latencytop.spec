@@ -10,6 +10,7 @@ License:	GPLv2
 Group:		Development/Other
 URL:		https://latencytop.org/
 Source0:	http://latencytop.org/download/latencytop-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	ncursesw-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:  gtk2-devel
