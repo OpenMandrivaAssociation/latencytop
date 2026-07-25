@@ -5,7 +5,7 @@
 Summary:	Visualizer of system latencies
 Name:		%name
 Version:	%version
-Release:	%mkrel %rel
+Release:	%rel.1
 License:	GPLv2
 Group:		Development/Other
 URL:		https://latencytop.org/
